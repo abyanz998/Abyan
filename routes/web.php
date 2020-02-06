@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {   //INI BUAT NGASIH URL YANG DIKETIK, karena sampai di / maka ini halaman home
+return view('welcome');    // INI FUNGSINYA MANGGIL FOLDER view lalu nama filenya welcome
 });
+
+Route::get('home' ,
+'homecontroller@index' );
+
+Route::get('menu' ,
+'homecontroller@menu' );
+
+Route::get('about' ,
+'homecontroller@about' );
+
+Route::get('contact' ,
+'homecontroller@contact' );
+
+Route::get('table' ,
+'homecontroller@table' );
