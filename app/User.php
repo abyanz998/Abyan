@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-    ];  // DIMODEL ADA KOLOM APA AJA, INI OPTIONAL AJA
+    ];
 
     /**
      * The attributes that should be hidden for arrays.

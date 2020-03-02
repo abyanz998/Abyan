@@ -1,49 +1,100 @@
-@extends('layouts.master')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-    <!-- start banner Area -->
-    <section class="banner-area relative" id="home">
-      <div class="overlay overlay-bg"></div>
-      <div class="container">
-        <div class="row fullscreen d-flex justify-content-center align-items-center">
-          <div class="banner-content col-lg-10 col-md-12 justify-content-center">
-            <h6 class="text-uppercase">Halal food for everyone </h6>
-            <h1>
-               KEBAIKAN BERAWAL DARI YANG HALAL
-            </h1>
-            <p class="text-white mx-auto">
-              “Perbaikilah makananmu, maka do’amu akan mustajab.” (HR. Thobroni dalam Ash Shoghir)
+        <title>Laravel</title>
 
-            </p>
-            <a href="#" class="primary-btn squire text-uppercase mt-10">Check Our Menu</a>
-          </div>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    Laravel
+                </div>
+
+                <div class="links">
+                    <a href="https://laravel.com/docs">Docs</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://blog.laravel.com">Blog</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://vapor.laravel.com">Vapor</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-    <!-- End banner Area -->
-
-    <!-- Start home-about Area -->
-    <section class="home-about-area section-gap">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            <h6 class="text-uppercase">Jajanan Baru yang menginspirasi</h6>
-            <h1>
-              Kita bakar secara merata
-              dari hati kami untuk pelayanan terbaik
-            </h1>
-            <p>
-              <span>Kami ingin mendengar komentarmu dan keluhanmu</span>
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
-            </p>
-            <a class="primary-btn squire mx-auto mt-20" href="lainnya">Get Started Now</a>
-          </div>
-        </div>
-      </div>
-      <img class="about-img" src="about-img.png" alt="">
-    </section>
-    <!-- End home-about Area -->
-
-@endsection
+    </body>
+</html>

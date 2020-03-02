@@ -11,21 +11,44 @@
 |
 */
 
-Route::get('/', function () {   //INI BUAT NGASIH URL YANG DIKETIK, karena sampai di / maka ini halaman home
-return view('welcome');    // INI FUNGSINYA MANGGIL FOLDER view lalu nama filenya welcome
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('home' ,
-'homecontroller@index' );
+Auth::routes();
 
-Route::get('menu' ,
-'homecontroller@menu' );
+Route::get('/home',
+'HomeController@index')->name('index'); // home itu = /login diarahkan ke login tapi buka web
 
-Route::get('about' ,
-'homecontroller@about' );
+Route::get('/chef',
+'HomeController@chef')->middleware('auth');
 
-Route::get('contact' ,
-'homecontroller@contact' );
+Route::get('/chef/tambah',
+'HomeController@tambah')->middleware('auth'); // diarahkan ke form penginputan
 
-Route::get('table' ,
-'homecontroller@table' );
+Route::post('/chef/store',
+'CrudController@store')->middleware('auth'); //menangkap data dari form lalu diarahkan ke database untuk inputan
+
+Route::get('/chef/edit/{id}',
+'CrudController@edit')->middleware('auth'); //mengantar data ke form update
+
+Route::put('/chef/update/{id}',
+'CrudController@update')->middleware('auth'); //mengantar data ke form update
+
+Route::get('/chef/delete/{id}',
+'CrudController@delete')->middleware('auth'); //mengantar data ke form update
+
+Route::get('/upload',
+'CrudController@upload')->middleware('auth'); //mengupload file ke database
+
+Route::post('/upload/proses',
+'CrudController@proses_upload')->middleware('auth'); //mengantar data ke form update
+
+Route::get('/upload/hapus/{id}',
+'CrudController@hapus')->middleware('auth'); //mengantar data ke form update
+
+Route::get('/statistik',
+'HomeController@statistik')->middleware('auth');
+
+Route::put('/statistik/update',
+'CrudController@statistik_update')->middleware('auth');
