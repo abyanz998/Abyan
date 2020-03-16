@@ -32,31 +32,6 @@
 
 </head>
 <body>
-
-  <!-- INI BAGIAN MENU AUTH BAWAAN DARI LARAVELNYA OKEE -->
-  <!-- <div class="flex-center position-ref full-height">
-      @if (Route::has('login'))
-          <div class="top-right links">
-              @auth
-                  <a href="{{ url('/home') }}">Home</a>
-              @else
-                  <a href="{{ route('login') }}">Login</a>
-
-                  @if (Route::has('register'))
-                      <a href="{{ route('register') }}">Register</a>
-                  @endif
-              @endauth
-          </div>
-      @endif
-
-      <div class="content">
-
-      </div>
-  </div> -->
-
-  <!-- BAGIAN AUTH BAWAAN LARAVELNYA SAMPAI DISINI AJA YAAAA -->
-
-
   <header id="header" id="home">
     <div class="header-top">
       <div class="container">
@@ -88,53 +63,14 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="/home">Home</a></li>
-          <li><a href="/chef">Chef</a></li>
-          <li><a href="/upload">Menu</a></li>
-          <li><a href="/statistik">Statistik</a></li>
-          <!-- <li class="menu-has-children"><a href="">Blog</a>
-            <ul>
-              <li><a href="blog-home.html">Blog Home</a></li>
-              <li><a href="blog-single.html">Blog Single</a></li>
-              <li class="menu-has-children"><a href="">Level 2</a>
-                <ul>
-                  <li><a href="#">Item One</a></li>
-                  <li><a href="#">Item Two</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li> -->
-          <li><a href="/pesanan">PESANAN</a></li>
-
-          @guest
+              <li class="menu-active"><a href="/">Home</a></li>
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login ADMIN') }}</a>
               </li>
-              @if (Route::has('register'))
+
                   <li class="nav-item">
                       <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                   </li>
-              @endif
-          @else
-              <li class="nav-item dropdown">
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      {{ Auth::user()->name }} <span class="caret"></span>
-                  </a>
-
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('logout') }}"
-                         onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                          {{ __('Logout') }}
-                      </a>
-
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          @csrf
-                      </form>
-                  </div>
-              </li>
-          @endguest
-
         </ul>
       </nav><!-- #nav-menu-container -->
       </div>

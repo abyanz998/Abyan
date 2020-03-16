@@ -34,7 +34,9 @@
 					</thead>
 					<tbody>
 						@foreach($menu as $m)
-						<tr>
+						<!-- ini berarti maksud kodingannya yaitu satu baris tabel mengambil data satu baris semua dari database
+						secara langsung, makanya satu baris tabel nilainya beda beda dari kolom yang beda beda.. bukan nilai beda dari kolom yang sama
+						<tr> -->
 							<td><img width="150px" src="{{ url('/data_file/'.$m->file) }}"></td>
 							<td>{{$m->judul}}</td>
 							<td>{{$m->harga}}</td>

@@ -31,7 +31,7 @@ class CrudController extends Controller
   public function edit($id){
 
     $chef = Chef::find($id);
-   return view('update', ['chef' => $chef]);
+   return view('update', ['chef' => $chef]); // ini masalahnya kalau mau pakai model ya disinii dia kan soalnya ke parse ke halaman beda di update.blade
 
   }
 
@@ -58,7 +58,7 @@ class CrudController extends Controller
   }
 
   public function upload(){
-    $menu = Menu::get();
+    $menu = Menu::paginate(2);
 		return view('upload',['menu'=>$menu]);
 	}
 
@@ -107,6 +107,14 @@ class CrudController extends Controller
     $chef->alamat = $request->alamat;
     $chef->save();
     return redirect('/chef');
+  }
+
+  public function beli(Request $request, $id)
+  {
+    $belis = Menu::find($id);
+    // dd($request); // disini proses umpan dari form beli kalau uda lewat route
+
+
   }
 
 }

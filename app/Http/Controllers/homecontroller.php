@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Chef; // memanggil model chef jadi pakai eloquent
 use App\Menu; // memanggil model Gambar jadi pakai eloquent
+use App\Pelanggan; // memanggil model Gambar jadi pakai eloquent
+use App\Pesanan_detail; // memanggil model Gambar jadi pakai eloquent
+use App\Pesanan; // memanggil model Gambar jadi pakai eloquent
 
 class HomeController extends Controller
 {
@@ -24,6 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
         return view('index');
@@ -32,7 +36,7 @@ class HomeController extends Controller
     public function chef()
     {
       // mengambil data chef
-    	$chef = Chef::all();
+    	$chef = Chef::paginate(5);
 
     	// mengirim data chef ke view elements
     	return view('elements', ['chef' => $chef]);
@@ -47,6 +51,19 @@ class HomeController extends Controller
     {
       $menu = Menu::all();
   		return view('statistik',['menu'=>$menu]);
+    }
+
+    public function menu()
+    {
+  		return view('menus');
+    }
+
+    public function pesanan()
+    {
+      $pelanggan = Pelanggan::paginate(6);
+      $pesanan_detail = Pesanan_detail::paginate(6);
+      $pesanan = Pesanan::paginate(6);
+      return view('pesanan',compact('pelanggan','pesanan_detail','pesanan'));
     }
 
 }

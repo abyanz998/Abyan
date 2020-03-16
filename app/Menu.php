@@ -14,4 +14,9 @@ class Menu extends Model
     {
     	return $this->hasOne('App\Statistik','id_menu');
     }
+
+    public function Pesanan_detail()
+      {
+      	return $this->hasMany('App\Pesanan_detail','id_menu'); // menu bisa memiliki banyak pesanan_detail
+      }
 }

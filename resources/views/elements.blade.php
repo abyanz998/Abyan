@@ -10,8 +10,6 @@
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
 								Tabel Data Chef Halal Food
-							</h1>
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="elements.html">Data Tabel Chef</a></p>
 						</div>
 					</div>
 				</div>
@@ -21,14 +19,59 @@
 			<!-- Start Sample Area -->
 			<section class="sample-text-area">
 				<div class="container">
-					<h3 class="text-heading">Chef Halal Food</h3>
-					<p class="sample-text">
+						<a href="/chef/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">INPUT DATA PEGAWAI</button>
 
+									<!-- Modal -->
+									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+									<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">UPLOAD DATA PEGAWAI</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form method="post" action="/chef/store">
+												{{ csrf_field() }}
+
+												<div class="form-group">
+														<label>Nama</label>
+														<input type="text" name="nama" class="form-control" placeholder="Nama pegawai ..">
+
+														@if($errors->has('nama'))
+																<div class="text-danger">
+																		{{ $errors->first('nama')}}
+																</div>
+														@endif
+
+												</div>
+
+												<div class="form-group">
+														<label>Alamat</label>
+														<textarea name="alamat" class="form-control" placeholder="Alamat pegawai .."></textarea>
+
+														 @if($errors->has('alamat'))
+																<div class="text-danger">
+																		{{ $errors->first('alamat')}}
+																</div>
+														@endif
+
+												</div>
+
+												<div class="form-group">
+														<input type="submit" class="btn btn-success" value="Simpan">
+												</div>
+
+										</form>
+									</div>
+									</div>
+									</div>
+									</div>
+						<!-- ini akhir dari modal buat input data -->
 
 						<div class="card-body">
-									<a href="/chef/tambah" class="btn btn-primary">Input Pegawai Baru</a>
-									<br/>
-									<br/>
 									<table class="table table-bordered table-hover table-striped">
 											<thead>
 													<tr>
@@ -50,6 +93,9 @@
 													@endforeach
 											</tbody>
 									</table>
+
+									Halaman : {{ $chef->currentPage() }} <br/>
+									{{ $chef->links() }}
 							</div>
 
 					</p>
